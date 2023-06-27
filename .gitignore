@@ -9,3 +9,10 @@
 
 # Database
 db.sqlite3
+
+# Migrations
+**/migrations/0*.py
+
+# Coverage
+.coverage
+htmlcov/
