@@ -16,3 +16,7 @@ db.sqlite3
 # Coverage
 .coverage
 htmlcov/
+
+# Media Files
+media/posts/*
+!media/posts/.gitkeep
