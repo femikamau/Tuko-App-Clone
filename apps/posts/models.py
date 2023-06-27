@@ -21,9 +21,7 @@ class Post(models.Model):
         DRAFT = "draft", _("Draft")
         PUBLISHED = "published", _("Published")
 
-    uuid = models.UUIDField(
-        _("uuid"), primary_key=True, default=uuid.uuid4, editable=False
-    )
+    uuid = models.UUIDField(_("uuid"), default=uuid.uuid4, editable=False)
 
     headline = models.CharField(_("headline"), max_length=255, blank=False)
     content = models.TextField(_("content"), blank=False)
