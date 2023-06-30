@@ -2,7 +2,6 @@ import uuid
 
 from django.contrib.auth import get_user_model
 from django.db import models
-from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 User = get_user_model()
@@ -31,8 +30,9 @@ class Post(models.Model):
         _("status"),
         max_length=9,
         choices=StatusChoices.choices,
-        default=StatusChoices.DRAFT,
+        blank=False,
     )
+    published_at = models.DateTimeField(_("published at"), blank=True, null=True)
 
     created_at = models.DateTimeField(_("created at"), auto_now_add=True)
     updated_at = models.DateTimeField(_("updated at"), auto_now=True)
@@ -44,13 +44,6 @@ class Post(models.Model):
 
     def __str__(self) -> str:
         return self.headline
-
-    @property
-    def published_at(self):
-        """
-        Get published at
-        """
-        return self.created_at if self.status == self.StatusChoices.PUBLISHED else None
 
     @classmethod
     def get_published_posts(cls):
